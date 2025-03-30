@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selector de Plantillas YouTube</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Opciones de Plantillas</h2>
+            <ul>
+                <li class="template-option" data-template="1">YouTube Channel</li>
+                <li class="template-option" data-template="2">Video Grid</li>
+                <li class="template-option" data-template="3">Single Video</li>
+                <li class="template-option" data-template="4">YouTube Subscribe</li>
+                <li class="template-option" data-template="5">Video Gallery</li>
+                <li class="template-option" data-template="7">Video List</li>
+            </ul>
+            <button id="select-btn">Seleccionar Plantilla</button>
+            
+            <!-- Contenedor de búsqueda (inicialmente oculto) -->
+            <div id="search-container" class="search-container">
+                <input type="text" id="video-url" placeholder="Ingresa URL de YouTube...">
+                <button id="search-btn">Buscar</button>
+            </div>
+        </div>
+        <div class="preview">
+            <h2>Vista Previa</h2>
+            <div id="template-preview">
+                <p>Selecciona una plantilla para ver la previsualización aquí.</p>
+            </div>
+            <!-- Botón para generar código embed -->
+            <button id="embed-btn" class="embed-btn" style="display: none;">Generar Código Embed</button>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="config.js"></script>
+    <script src="utils.js"></script>
+    <script src="youtube-channel.js"></script>
+    <script src="video-grid.js"></script>
+    <script src="single-video.js"></script>
+    <script src="youtube-subscribe.js"></script>
+    <script src="video-gallery.js"></script>
+    <script src="video-list.js"></script>
+    <script src="embed-generator.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
