@@ -6,97 +6,10 @@
     <title>Document</title>
 </head>
 <body>
-    <!-- YouTube Subscribe Button Embed -->
-<div id="yt-embed-1743361007541-254" style="max-width: 400px; margin: 0 auto;"></div>
-<script>
-(function() {
-    // Configuración
-    var config = {"templateId":"4","apiKey":"AIzaSyAIf_Irfxu3-4g2isr6pXR9gUSnaBmk3TU","videoId":"__xABjNEOYo","channelId":null,"username":null};
-    var container = document.getElementById("yt-embed-1743361007541-254");
-    
-    // Función para formatear números
-    function formatNumber(num) {
-        if (!num) return '0';
-        var number = parseInt(num);
-        if (number >= 1000000) {
-            return (number / 1000000).toFixed(1) + 'M';
-        } else if (number >= 1000) {
-            return (number / 1000).toFixed(1) + 'K';
-        } else {
-            return number.toString();
-        }
-    }
-    
-    // Mostrar mensaje de carga
-    container.innerHTML = '<div style="text-align: center; padding: 20px; color: #606060;">Cargando información del canal...</div>';
-    
-    // Determinar qué ID usar para cargar el canal
-    var channelIdOrUsername = config.channelId || config.username || config.videoId;
-    
-    // Si tenemos un ID de video, primero obtenemos el canal
-    if (config.videoId && !config.channelId && !config.username) {
-        fetch('https://www.googleapis.com/youtube/v3/videos?part=snippet&id=' + config.videoId + '&key=' + config.apiKey)
-            .then(function(response) { return response.json(); })
-            .then(function(data) {
-                if (data.items && data.items.length > 0) {
-                    var channelId = data.items[0].snippet.channelId;
-                    loadSubscribeButton(channelId);
-                } else {
-                    container.innerHTML = '<div style="text-align: center; padding: 20px; color: red;"><h3>Error</h3><p>No se pudo obtener información del canal a partir del video</p></div>';
-                }
-            })
-            .catch(function(error) {
-                container.innerHTML = '<div style="text-align: center; padding: 20px; color: red;"><h3>Error</h3><p>' + error.message + '</p></div>';
-            });
-    } else {
-        loadSubscribeButton(channelIdOrUsername);
-    }
-    
-    function loadSubscribeButton(channelIdOrUsername) {
-        // Determinar si es un ID de canal o un nombre de usuario
-        var isChannelId = channelIdOrUsername.startsWith('UC');
-        var apiUrl = isChannelId 
-            ? 'https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=' + channelIdOrUsername + '&key=' + config.apiKey
-            : 'https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&forUsername=' + channelIdOrUsername.replace('@', '') + '&key=' + config.apiKey;
-        
-        fetch(apiUrl)
-            .then(function(response) { return response.json(); })
-            .then(function(data) {
-                if (data.items && data.items.length > 0) {
-                    var channel = data.items[0];
-                    
-                    // Crear HTML para el botón de suscripción
-                    container.innerHTML = 
-                        '<div style="display: flex; align-items: center; padding: 15px; border: 1px solid #e0e0e0; border-radius: 8px; background-color: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">' +
-                        '<div style="width: 50px; height: 50px; border-radius: 50%; overflow: hidden; margin-right: 15px; border: 2px solid #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">' +
-                        '<img src="' + channel.snippet.thumbnails.default.url + '" alt="' + channel.snippet.title + '" style="width: 100%; height: 100%; object-fit: cover;">' +
-                        '</div>' +
-                        '<div style="flex-grow: 1;">' +
-                        '<h3 style="margin: 0 0 5px 0; font-size: 16px; font-weight: 500; color: #0a0a0a;">' + channel.snippet.title + '</h3>' +
-                        '<p style="margin: 0; color: #606060; font-size: 14px;">' + formatNumber(channel.statistics.subscriberCount) + ' suscriptores</p>' +
-                        '</div>' +
-                        '<button class="subscribe-btn" style="background-color: #cc0000; color: white; border: none; border-radius: 2px; padding: 10px 16px; font-size: 14px; font-weight: 500; cursor: pointer;">Suscribirse</button>' +
-                        '</div>';
-                    
-                    // Añadir event listener para el botón de suscripción
-                    var subscribeBtn = container.querySelector('.subscribe-btn');
-                    subscribeBtn.addEventListener('click', function() {
-                        window.open('https://www.youtube.com/channel/' + channel.id + '?sub_confirmation=1', '_blank');
-                        
-                        // Cambiar el aspecto del botón (solo visual, no afecta la suscripción real)
-                        this.style.backgroundColor = '#f1f1f1';
-                        this.style.color = '#606060';
-                        this.textContent = 'Suscrito';
-                    });
-                } else {
-                    container.innerHTML = '<div style="text-align: center; padding: 20px; color: red;"><h3>Error</h3><p>No se encontró el canal</p></div>';
-                }
-            })
-            .catch(function(error) {
-                container.innerHTML = '<div style="text-align: center; padding: 20px; color: red;"><h3>Error</h3><p>' + error.message + '</p></div>';
-            });
-    }
-})();
-</script>
+    <!-- YouTube Template Embed - Plantilla #1 -->
+<div id="yt-embed-1743363976028-719" style="text-align: center; padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px; max-width: 600px; margin: 0 auto;">
+    <h3>Plantilla #1</h3>
+    <p>Esta plantilla está en desarrollo.</p>
+</div>
 </body>
 </html>
